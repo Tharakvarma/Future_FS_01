@@ -32,7 +32,7 @@ function NeuralVisual() {
     [28, 86],
     [72, 86],
   ];
-  const edges = [
+  const edges: Array<[number, number]> = [
     [0, 1],
     [0, 2],
     [1, 4],
