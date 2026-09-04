@@ -88,19 +88,29 @@ export function SafeImage({
   loading?: "lazy" | "eager";
 }) {
   const [failed, setFailed] = useState(false);
+  const imgRef = useRef<HTMLImageElement>(null);
+
+  // The image may already have failed before hydration attached onError.
+  useEffect(() => {
+    const el = imgRef.current;
+    if (el && el.complete && el.naturalWidth === 0) setFailed(true);
+  }, [src]);
 
   return (
     <div className={cn("relative overflow-hidden bg-surface-2", className)}>
       {failed ? (
         <div className="bg-grid absolute inset-0 flex flex-col items-center justify-center gap-2 text-center">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,oklch(0.68_0.17_250/22%),transparent_65%)]" />
-          <ImageIcon className="relative size-7 text-accent/80" aria-hidden />
-          <p className="relative px-4 font-mono text-[11px] tracking-widest text-muted-foreground uppercase">
-            {label ?? "Image placeholder"}
-          </p>
+          <ImageIcon className="relative size-6 text-accent/80" aria-hidden />
+          {label !== "" && (
+            <p className="relative hidden px-4 font-mono text-[11px] tracking-widest text-muted-foreground uppercase @[8rem]:block">
+              {label ?? "Image placeholder"}
+            </p>
+          )}
         </div>
       ) : (
         <img
+          ref={imgRef}
           src={src}
           alt={alt}
           loading={loading}
