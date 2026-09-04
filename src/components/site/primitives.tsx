@@ -20,19 +20,38 @@ export function Reveal({
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            setVisible(true);
-            io.unobserve(e.target);
-          }
-        });
-      },
-      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
-    );
-    io.observe(el);
-    return () => io.disconnect();
+    let frame = 0;
+
+    const check = () => {
+      const r = el.getBoundingClientRect();
+      // Visible once any part has entered the viewport, or once scrolled past.
+      if (r.top < window.innerHeight - 40 && r.bottom > 0) {
+        setVisible(true);
+        cleanup();
+      } else if (r.bottom <= 0) {
+        setVisible(true);
+        cleanup();
+      }
+    };
+
+    const onScroll = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(check);
+    };
+
+    const cleanup = () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    check();
+
+    return () => {
+      cancelAnimationFrame(frame);
+      cleanup();
+    };
   }, []);
 
   return (
