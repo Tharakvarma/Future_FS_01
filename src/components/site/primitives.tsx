@@ -97,7 +97,7 @@ export function SafeImage({
   }, [src]);
 
   return (
-    <div className={cn("relative overflow-hidden bg-surface-2", className)}>
+    <div className={cn("@container relative overflow-hidden bg-surface-2", className)}>
       {failed ? (
         <div className="bg-grid absolute inset-0 flex flex-col items-center justify-center gap-2 text-center">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,oklch(0.68_0.17_250/22%),transparent_65%)]" />
