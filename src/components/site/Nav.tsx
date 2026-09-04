@@ -115,10 +115,14 @@ export function Nav() {
       </div>
 
       <div
+        id="mobile-menu"
         className={cn(
           "glass overflow-hidden border-b border-glass-border transition-[max-height,opacity] duration-400 lg:hidden",
-          open ? "max-h-96 opacity-100" : "max-h-0 opacity-0",
+          open
+            ? "max-h-[28rem] opacity-100"
+            : "pointer-events-none max-h-0 opacity-0",
         )}
+        {...(open ? {} : { inert: "" as unknown as boolean })}
       >
         <ul className="mx-auto flex w-full max-w-7xl flex-col px-5 py-3 sm:px-8">
           {NAV_LINKS.map((l) => (
