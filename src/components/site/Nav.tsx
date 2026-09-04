@@ -122,7 +122,7 @@ export function Nav() {
             ? "max-h-[28rem] opacity-100"
             : "pointer-events-none max-h-0 opacity-0",
         )}
-        {...(open ? {} : { inert: "" as unknown as boolean })}
+        inert={open ? undefined : true}
       >
         <ul className="mx-auto flex w-full max-w-7xl flex-col px-5 py-3 sm:px-8">
           {NAV_LINKS.map((l) => (
