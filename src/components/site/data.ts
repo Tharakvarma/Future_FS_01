@@ -1,3 +1,5 @@
+import profileAsset from "@/assets/profile.png.asset.json";
+
 export const PROFILE = {
   name: "Tharak Gumpu",
   title: "B.Tech Student | Artificial Intelligence Enthusiast",
@@ -10,8 +12,8 @@ export const PROFILE = {
   phone: "9063125997",
   linkedin: "https://linkedin.com/in/tharak-varma-3a04bb326",
   github: "https://github.com/Tharakvarma",
-  // Drop your photo at public/images/profile/profile.jpg to replace the placeholder.
-  photo: "/images/profile/profile.jpg",
+  // Replace the asset pointer below to swap the profile photo.
+  photo: profileAsset.url,
   // Drop your CV at public/resume.pdf to activate the download button.
   resume: "/resume.pdf",
 } as const;
