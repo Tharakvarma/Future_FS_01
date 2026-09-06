@@ -15,8 +15,8 @@ export const PROFILE = {
   github: "https://github.com/Tharakvarma",
   // Replace the asset pointer below to swap the profile photo.
   photo: profileAsset.url,
-  // Drop your CV at public/resume.pdf to activate the download button.
-  resume: "/resume.pdf",
+  // Replace the asset pointer below to swap the resume PDF.
+  resume: resumeAsset.url,
 } as const;
 
 export const NAV_LINKS = [
