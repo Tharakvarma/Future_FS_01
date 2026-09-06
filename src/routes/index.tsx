@@ -14,6 +14,7 @@ import { Footer } from "@/components/site/Footer";
 const TITLE = "Tharak Gumpu — AI & ML Portfolio";
 const DESCRIPTION =
   "Portfolio of Tharak Gumpu, a 3rd-year B.Tech student in Artificial Intelligence & Machine Learning based in Hyderabad, India — projects, skills and certifications.";
+const SITE_URL = "https://tharakvarma7.lovable.app";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -24,12 +25,12 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESCRIPTION },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/" },
+      { property: "og:url", content: SITE_URL },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: TITLE },
       { name: "twitter:description", content: DESCRIPTION },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [{ rel: "canonical", href: SITE_URL }],
     scripts: [
       {
         type: "application/ld+json",
