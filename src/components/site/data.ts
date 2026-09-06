@@ -1,4 +1,5 @@
 import profileAsset from "@/assets/profile.png.asset.json";
+import resumeAsset from "@/assets/resume.pdf.asset.json";
 
 export const PROFILE = {
   name: "Tharak Gumpu",
